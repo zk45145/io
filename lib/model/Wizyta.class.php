@@ -1,7 +1,7 @@
 <?php
 
 
-class Wizyta
+class Model_Wizyta
 {
     private $id;
     private $data;

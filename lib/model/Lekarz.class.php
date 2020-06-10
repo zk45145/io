@@ -1,7 +1,7 @@
 <?php
 
 
-class Lekarz
+class Model_Lekarz
 {
     private $id;
     private $imie;
@@ -40,12 +40,12 @@ class Lekarz
         $this->nazwisko = $nazwisko;
     }
 
-    public function getSpecjalizacja()
+    public function getSpecjalizacjaId()
     {
         return $this->specjalizacja;
     }
 
-    public function setSpecjalizacja($specjalizacja)
+    public function setSpecjalizacjaId($specjalizacja)
     {
         $this->specjalizacja = $specjalizacja;
     }

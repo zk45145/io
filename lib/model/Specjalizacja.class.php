@@ -1,7 +1,7 @@
 <?php
 
 
-class Specjalizacja
+class Model_Specjalizacja
 {
     private $nazwa;
     private $lekarze;

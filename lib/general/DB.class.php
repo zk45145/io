@@ -20,11 +20,15 @@ class General_DB
      */
     public function __construct()
     {
-        $config = General_Config::getDBConnect();
-        $this->adesss = $config['address'];
-        $this->user = $config['user'];
-        $this->password = $config['password'];
-        $this->nameDataBase = $config['nameDataBase'];
+//        $config = General_Config::getDBConnect();
+//        $this->adesss = $config['address'];
+//        $this->user = $config['user'];
+//        $this->password = $config['password'];
+//        $this->nameDataBase = $config['nameDataBase'];
+        $this->adesss = 'localhost';
+        $this->user = 'root';
+        $this->password = '';
+        $this->nameDataBase = 'io';
         $this->connect = mysqli_connect(
             $this->adesss,
             $this->user,
@@ -45,16 +49,16 @@ class General_DB
     {
         foreach ($params as $key => $param) {
             if (strpos($query, '[int:' . $key . ']')) {
-                str_replace('[int:' . $key . ']', $param, $query);
+                $query = str_replace('[int:' . $key . ']', $param, $query);
             }
             if (strpos($query, '[str:' . $key . ']')) {
-                str_replace('[str:' . $key . ']', "'" . $param . "'", $query);
+                $query = str_replace('[str:' . $key . ']', '"' . $param . '"', $query);
             }
             if (strpos($query, '[a_int:' . $key . ']')) {
-                str_replace('[a_int:' . $key . ']', implode(', ', $param), $query);
+                $query = str_replace('[a_int:' . $key . ']', implode(', ', $param), $query);
             }
             if (strpos($query, '[a_str:' . $key . ']')) {
-                str_replace('[a_str:' . $key . ']', implode(', ', "'" . $param . "'"), $query);
+                $query = str_replace('[a_str:' . $key . ']', implode(', ', '"' . $param . '"'), $query);
             }
         }
         $results = [];

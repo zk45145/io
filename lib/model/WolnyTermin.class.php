@@ -1,7 +1,7 @@
 <?php
 
 
-class WolnyTermin
+class Model_WolnyTermin
 {
     private $id;
     private $lekarz;

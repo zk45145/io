@@ -21,6 +21,10 @@ class General_Application
         [
             'name' => 'Kontakt',
             'href' => 'contact.php'
+        ],
+        [
+            'name' => 'Lekarze',
+            'href' => 'lekarze.php'
         ]
     ];
 
@@ -43,6 +47,8 @@ class General_Application
                <html>
                     <head>
                         <title>Title of the document</title>
+                        <script src='js/jQuery.js'></script>
+                        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
                     </head>
                     <body>";
 
@@ -85,7 +91,7 @@ class General_Application
     {
         $menuToPrint = [];
         foreach ($this->menu as $position) {
-            $menuToPrint[] = '<a href="' . $position['href'] . '">' . $position['name'] . '</a>';
+            $menuToPrint[] = '<a href="' . $_SERVER['HTTP_HOST'] . '/io/' . $position['href'] . '">' . $position['name'] . '</a>';
         }
         print $this->form->list($menuToPrint);
 

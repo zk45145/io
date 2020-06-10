@@ -1,7 +1,7 @@
 <?php
 
 
-class DaneRezerwacji
+class Model_DaneRezerwacji
 {
     private $opis;
     private $wizyta;

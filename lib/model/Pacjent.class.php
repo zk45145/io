@@ -1,5 +1,5 @@
 <?php
-class Pacjent
+class Model_Pacjent
 {
     private $id;
     private $imie;

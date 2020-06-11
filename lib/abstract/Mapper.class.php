@@ -11,9 +11,16 @@ abstract class Abstract_Mapper
      */
     public function save($Model)
     {
-        $query = 'INSERT INTO %s (%s) VALUES (%s)';
+        if (!empty($Model->getId())) {
+            $query = 'UPDATE %s SET %s WHERE id = [int:id]';
+            $update = true;
+        } else {
+            $query = 'INSERT INTO %s (%s) VALUES (%s)';
+            $update = false;
+        }
         $valuesName = [];
         $fieldsName = [];
+        $updateValues = [];
         $params = [];
         foreach ($this->getFields() as $field) {
             if ($field == 'id') {
@@ -26,25 +33,36 @@ abstract class Abstract_Mapper
                 case 'integer':
                     $fieldsName[] = $field;
                     $valuesName[] = '[int:' . $field . ']';
+                    $updateValues[] = $field . ' = ' . '[int:' . $field . ']';
                     break;
                 case 'string':
                     $fieldsName[] = $field;
                     $valuesName[] = '[str:' . $field . ']';
+                    $updateValues[] = $field . ' = ' . '[str:' . $field . ']';
                     break;
                 default:
                     continue 2;
             }
             $params[$field] = $value;
-
         }
-        $query = sprintf(
-            $query,
-            $this->table,
-            implode(', ', $fieldsName),
-            implode(', ', $valuesName)
-        );
+        if ($update) {
+            $params['id'] = $Model->getId();
+        }
+        if ($update) {
+            $query = sprintf(
+                $query,
+                $this->table,
+                implode(', ', $updateValues)
+            );
+        } else {
+            $query = sprintf(
+                $query,
+                $this->table,
+                implode(', ', $fieldsName),
+                implode(', ', $valuesName)
+            );
+        }
 
-        print $query;
         $db = new General_DB();
         $db->query($query, $params);
     }
@@ -70,6 +88,25 @@ abstract class Abstract_Mapper
         }
 
         return $models;
+    }
+
+    public function getByIds($id)
+    {
+        $models = $this->fetchAll();
+        foreach ($models as $model) {
+            if ($model->getId() == $id) {
+                return $model;
+            }
+        }
+
+        throw new Exception('Brak obiektu');
+    }
+
+    public function deleteById($id)
+    {
+        $query = 'DELETE FROM %s WHERE id = [int:id]';
+        $db = new General_DB();
+        $db->query(sprintf($query, $this->table), ['id' => $id]);
     }
 
     /**

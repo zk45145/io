@@ -23,6 +23,10 @@ class General_Application
             'href' => 'contact.php'
         ],
         [
+            'name' => 'Specjalizacje',
+            'href' => 'specjalizacje.php'
+        ],
+        [
             'name' => 'Lekarze',
             'href' => 'lekarze.php'
         ]
@@ -43,12 +47,17 @@ class General_Application
      */
     public function printHeader()
     {
+        if (isset($_GET['ajax']) && $_GET['ajax']) {
+            return $this;
+        }
         print "<!DOCTYPE html>
                <html>
                     <head>
                         <title>Title of the document</title>
                         <script src='js/jQuery.js'></script>
+                        <script src='js/main.js'></script>
                         <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
+                        <link rel=\"stylesheet\" href=\"css/style.css\">
                     </head>
                     <body>";
 
@@ -62,6 +71,9 @@ class General_Application
      */
     public function printFooter()
     {
+        if (isset($_GET['ajax']) && $_GET['ajax']) {
+            return $this;
+        }
         print "    </body>
                </html>";
 
@@ -77,6 +89,9 @@ class General_Application
      */
     public function printHeaderText(string $headerText)
     {
+        if (isset($_GET['ajax']) && $_GET['ajax']) {
+            return $this;
+        }
         print $this->form->getTag('h1', $headerText);
 
         return $this;
@@ -89,11 +104,22 @@ class General_Application
      */
     public function printMenu()
     {
+        if (isset($_GET['ajax']) && $_GET['ajax']) {
+            return $this;
+        }
         $menuToPrint = [];
         foreach ($this->menu as $position) {
-            $menuToPrint[] = '<a href="' . $_SERVER['HTTP_HOST'] . '/io/' . $position['href'] . '">' . $position['name'] . '</a>';
+            $menuToPrint[] = '<a class="nav-link" href="' . $position['href'] . '">' . $position['name'] . '</a>';
         }
-        print $this->form->list($menuToPrint);
+
+        $ret = '<div class="navbar navbar-expand-sm bg-light">';
+        $ret .= '<ul class="navbar-nav">';
+        foreach ($menuToPrint as $element) {
+            $ret .= '<li class="nav-item">' . $element . '</li>';
+        }
+        $ret .= '</ul>';
+        $ret .= '</div>';
+        print $ret;
 
         return $this;
     }

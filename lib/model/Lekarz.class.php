@@ -40,6 +40,13 @@ class Model_Lekarz
         $this->nazwisko = $nazwisko;
     }
 
+    public function getSpecjalizacja()
+    {
+        $mapperSpecjalziacja = new Mapper_Specjalizacja();
+
+        return $mapperSpecjalziacja->getByIds($this->getSpecjalizacjaId());
+    }
+
     public function getSpecjalizacjaId()
     {
         return $this->specjalizacja;

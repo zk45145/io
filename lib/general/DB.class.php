@@ -63,13 +63,17 @@ class General_DB
         }
         $results = [];
         try {
-        $query = mysqli_real_escape_string($this->connect, $query);
+//        $query = mysqli_real_escape_string($this->connect, $query);
            $res = mysqli_query($this->connect, $query);
-            if (mysqli_num_rows($res) > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $results[] = $row;
-                }
-            }
+           if (gettype($res) != 'boolean') {
+               if (mysqli_num_rows($res) > 0) {
+                   while ($row = mysqli_fetch_assoc($res)) {
+                       $results[] = $row;
+                   }
+               }
+           } else {
+               return $res;
+           }
 
             return $results;
         } catch (Exception $e) {

@@ -3,9 +3,19 @@
 
 class Model_Specjalizacja
 {
+    private $id;
     private $nazwa;
     private $lekarze;
 
+     public function getId()
+     {
+         return $this->id;
+     }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     public function getNazwa()
     {
         return $this->nazwa;

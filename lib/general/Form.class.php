@@ -3,6 +3,9 @@
 
 class General_Form
 {
+    //TODO Można powiększyć zestaw typów przycisków o typy z https://getbootstrap.com/docs/4.0/components/buttons/
+    const BUTTONPRIMARY = 'btn-primary';
+    const BUTTONDANGER = 'btn-danger';
     /**
      * Zwraca wskazany tag z zawartoscia
      *
@@ -13,6 +16,11 @@ class General_Form
     public function getTag(string $tag, string $text): string
     {
         return '<' . $tag . '>' . $text . '</' . $tag . '>';
+    }
+
+    public function button($name, $onclick, $class = self::BUTTONPRIMARY)
+    {
+        return '<button class="btn ' . $class . '" onclick="' . $onclick . '">' . $name . '</button>';
     }
 
     /**
@@ -44,7 +52,7 @@ class General_Form
 
     public function tableBegin()
     {
-        return '<table>';
+        return '<table class="table">';
     }
 
     public function tableEnd()
@@ -57,11 +65,11 @@ class General_Form
         $ret = '';
         $ret .= $this->tableBegin();
 
-        $ret .= '<tr>';
+        $ret .= '<thead>';
         foreach ($titles as $title) {
             $ret .= $this->getTag('th', $title);
         }
-        $ret .= '</tr>';
+        $ret .= '</thead>';
         foreach ($rows as $row)
         {
             $ret .= $this->row($row);
@@ -80,6 +88,38 @@ class General_Form
             $ret .= $this->getTag('td', $position);
         }
         $ret .= '</tr>';
+
+        return $ret;
+    }
+
+    public function input($name, $value, $type = 'text')
+    {
+        return '<input name="' . $name . '" value="' . $value . '" type="' . $type . '"/>';
+    }
+
+    public function formBegin($action, $method = 'POST')
+    {
+        return '<form action="' . $action . '" method="' . $method . '">';
+    }
+
+    public function formEnd()
+    {
+        return '</form>';
+    }
+
+    public function submit()
+    {
+        return '<input class ="btn btn-primary" type="submit" value="Zapisz"/>';
+    }
+
+    public function select($name, $options, $selectValue = null)
+    {
+        $ret = '';
+        $ret .= '<select name="' . $name . '">';
+        foreach ($options as $option) {
+            $ret .= '<option value="' . $option['value'] . '" '. ($option['value'] == $selectValue ? 'selected' : '') .'>' . $option['name'] . '</option>';
+        }
+        $ret .= '</select>';
 
         return $ret;
     }

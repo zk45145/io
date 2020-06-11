@@ -3,6 +3,8 @@ class Mapper_Pacjent extends Abstract_Mapper
 {
     protected $table = 'pacjenci';
 
+
+
     public function save($model)
     {
         parent::save($model);

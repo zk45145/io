@@ -36,7 +36,7 @@ class View_Specjalizacje
         }
         $this->content .= $this->form->formBegin('specjalizacje.php?action=add');
         $this->content .= $this->form->tableBegin();
-        $this->content .= $this->form->row(['nazwa specjalizacji', $this->form->input('nazwa', '')]);
+        $this->content .= $this->form->row(['Nazwa specjalizacji', $this->form->input('nazwa', '')]);
         $this->content .= $this->form->tableEnd();
         $this->content .= $this->form->input('action', 'create', 'hidden');
         $this->content .= $this->form->submit();
@@ -55,7 +55,7 @@ class View_Specjalizacje
         $this->content .= $this->form->formBegin('specjalizacje.php?action=edit');
         $this->content .= $this->form->tableBegin();
         $this->content .= $this->form->row(['id', $specjalizacja->getId()]);
-        $this->content .= $this->form->row(['nazwa specjalizacji', $this->form->input('nazwa', $specjalizacja->getNazwa())]);
+        $this->content .= $this->form->row(['Nazwa specjalizacji', $this->form->input('nazwa', $specjalizacja->getNazwa())]);
         $this->content .= $this->form->tableEnd();
         $this->content .= $this->form->input('action', 'update', 'hidden');
         $this->content .= $this->form->input('id', $specjalizacja->getId(), 'hidden');
@@ -65,10 +65,10 @@ class View_Specjalizacje
 
     private function listAction()
     {
-        $this->content .= $this->form->header('Lista specjalziacji');
-        $this->content .= $this->form->button('Dodaj', 'add()');
+        $this->content .= $this->form->header('<p>Lista specjalizacji');
+        $this->content .= $this->form->button('Dodaj', 'add()', "btn btn-primary btn-lg btn-block");
         $title = [
-            'id',
+            'ID',
             'Nazwa',
             'Operacje'
         ];

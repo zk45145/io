@@ -94,11 +94,13 @@ class General_Form
 
     public function input($name, $value, $type = 'text')
     {
-        return '<input name="' . $name . '" value="' . $value . '" type="' . $type . '"/>';
+        return '<input name="' . $name . '" value="' . $value . '" type="' . $type . '" class="form-control"/>';
+        
     }
 
     public function formBegin($action, $method = 'POST')
     {
+
         return '<form action="' . $action . '" method="' . $method . '">';
     }
 
@@ -109,13 +111,13 @@ class General_Form
 
     public function submit()
     {
-        return '<input class ="btn btn-primary" type="submit" value="Zapisz"/>';
+        return '<p><input class ="btn btn-primary btn-lg" type="submit" value="Zapisz"/></p>';
     }
 
     public function select($name, $options, $selectValue = null)
     {
         $ret = '';
-        $ret .= '<select name="' . $name . '">';
+        $ret .= '<select name="' . $name . '" class="form-control">';
         foreach ($options as $option) {
             $ret .= '<option value="' . $option['value'] . '" '. ($option['value'] == $selectValue ? 'selected' : '') .'>' . $option['name'] . '</option>';
         }

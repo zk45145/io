@@ -53,9 +53,9 @@ class View_Lekarze
 
         $this->content .= $this->form->formBegin('lekarze.php?action=add');
         $this->content .= $this->form->tableBegin();
-        $this->content .= $this->form->row(['imie', $this->form->input('imie', '')]);
-        $this->content .= $this->form->row(['nazwisko', $this->form->input('nazwisko', '')]);
-        $this->content .= $this->form->row(['specjalizacja', $this->form->select('specjalizacja', $selectSpecjalziacje)]);
+        $this->content .= $this->form->row(['Imię', $this->form->input('imie', '')]);
+        $this->content .= $this->form->row(['Nazwisko', $this->form->input('nazwisko', '')]);
+        $this->content .= $this->form->row(['Specjalizacja', $this->form->select('specjalizacja', $selectSpecjalziacje)]);
         $this->content .= $this->form->tableEnd();
         $this->content .= $this->form->input('action', 'create', 'hidden');
         $this->content .= $this->form->submit();
@@ -85,10 +85,10 @@ class View_Lekarze
 
         $this->content .= $this->form->formBegin('lekarze.php?action=edit');
         $this->content .= $this->form->tableBegin();
-        $this->content .= $this->form->row(['id', $lekarz->getId()]);
-        $this->content .= $this->form->row(['imie', $this->form->input('imie',$lekarz->getImie())]);
-        $this->content .= $this->form->row(['nazwisko', $this->form->input('nazwisko', $lekarz->getNazwisko())]);
-        $this->content .= $this->form->row(['specjalizacja', $this->form->select('specjalizacja', $selectSpecjalziacje, $lekarz->getSpecjalizacjaId())]);
+        $this->content .= $this->form->row(['ID', $lekarz->getId()]);
+        $this->content .= $this->form->row(['Imię', $this->form->input('imie',$lekarz->getImie())]);
+        $this->content .= $this->form->row(['Nazwisko', $this->form->input('nazwisko', $lekarz->getNazwisko())]);
+        $this->content .= $this->form->row(['Specjalizacja', $this->form->select('specjalizacja', $selectSpecjalziacje, $lekarz->getSpecjalizacjaId())]);
         $this->content .= $this->form->tableEnd();
         $this->content .= $this->form->input('action', 'update', 'hidden');
         $this->content .= $this->form->input('id', $lekarz->getId(), 'hidden');
@@ -98,11 +98,11 @@ class View_Lekarze
 
     private function listAction()
     {
-        $this->content .= $this->form->header('Lista lekarzy');
-        $this->content .= $this->form->button('Dodaj', 'add()');
+        $this->content .= $this->form->header('<p>Lista lekarzy');
+        $this->content .= $this->form->button('Dodaj', 'add()',"btn btn-primary btn-lg btn-block");
         $title = [
-            'id',
-            'Imie',
+            'ID',
+            'Imię',
             'Nazwisko',
             'Specjalizacja',
             'Operacje'
@@ -132,7 +132,7 @@ class View_Lekarze
         }
         $this->content .= $this->form->formBegin('lekarze.php?action=delete');
         $this->content .= $this->form->tableBegin();
-        $this->content .= $this->form->row(['Zostanie usuniety lekarz']);
+        $this->content .= $this->form->row(['Zostanie usunięty lekarz']);
         $this->content .= $this->form->tableEnd();
         $this->content .= $this->form->input('action', 'delete', 'hidden');
         $this->content .= $this->form->input('id', $_POST['id'], 'hidden');

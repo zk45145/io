@@ -56,9 +56,29 @@ class Model_Pacjent
         return $this->ulica . ' ' . $this->miasto;
     }
 
+    public function getUlica()
+    {
+        return $this->ulica;
+    }
+
+    public function getMiasto()
+    {
+        return $this->miasto;
+    }
+
     public function setAdres($ulica, $miasto)
     {
         $this->ulica = $ulica;
+        $this->miasto = $miasto;
+    }
+
+    public function setUlica($ulica)
+    {
+        $this->ulica = $ulica;
+    }
+
+    public function setMiasto($miasto)
+    {
         $this->miasto = $miasto;
     }
 
@@ -67,7 +87,17 @@ class Model_Pacjent
         return $this->adresEMail;
     }
 
+    public function getAdresEmail()
+    {
+        return $this->adresEMail;
+    }
+
     public function setEMail($eMail)
+    {
+        $this->adresEMail = $eMail;
+    }
+
+    public function setAdresEMail($eMail)
     {
         $this->adresEMail = $eMail;
     }

@@ -29,6 +29,10 @@ class General_Application
         [
             'name' => 'Lekarze',
             'href' => 'lekarze.php'
+        ],
+        [
+            'name' => 'Pacjenci',
+            'href' => 'pacjenci.php'
         ]
     ];
 
@@ -53,13 +57,14 @@ class General_Application
         print "<!DOCTYPE html>
                <html>
                     <head>
-                        <title>Title of the document</title>
+                        <title>Poradnia dentystyczna</title>
                         <script src='js/jQuery.js'></script>
                         <script src='js/main.js'></script>
                         <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
                         <link rel=\"stylesheet\" href=\"css/style.css\">
                     </head>
-                    <body>";
+                    <body>
+                    <h1>Poradnia dentystyczna</h1>";
 
         return $this;
     }
@@ -92,7 +97,7 @@ class General_Application
         if (isset($_GET['ajax']) && $_GET['ajax']) {
             return $this;
         }
-        print $this->form->getTag('h1', $headerText);
+        print $this->form->getTag('h2', $headerText);
 
         return $this;
     }
@@ -109,11 +114,11 @@ class General_Application
         }
         $menuToPrint = [];
         foreach ($this->menu as $position) {
-            $menuToPrint[] = '<a class="nav-link" href="' . $position['href'] . '">' . $position['name'] . '</a>';
+            $menuToPrint[] = '<a class="nav-link link" href="' . $position['href'] . '">' . $position['name'] . '</a>';
         }
 
         $ret = '<div class="navbar navbar-expand-sm bg-light">';
-        $ret .= '<ul class="navbar-nav">';
+        $ret .= '<ul class="nav nav-tabs">';
         foreach ($menuToPrint as $element) {
             $ret .= '<li class="nav-item">' . $element . '</li>';
         }

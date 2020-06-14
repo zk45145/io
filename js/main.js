@@ -3,8 +3,8 @@ function topLayer(url, title, data)
     zamknij();
     showwait();
     $.ajax({
-        url         : url, //wymagane, gdzie się łączymy
-        method      : "post", //typ połączenia, domyślnie get
+        url         : url,
+        method      : "post",
         data        : data,
         success: function(result){
             hidewait();

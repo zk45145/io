@@ -3,14 +3,29 @@
 
 class General_DB
 {
+    /**
+     * @var string
+     */
     private $adesss;
 
+    /**
+     * @var string
+     */
     private $user;
 
+    /**
+     * @var string
+     */
     private $password;
 
+    /**
+     * @var string
+     */
     private $nameDataBase;
 
+    /**
+     * @var false|mysqli
+     */
     private $connect;
 
     /**
@@ -20,11 +35,6 @@ class General_DB
      */
     public function __construct()
     {
-//        $config = General_Config::getDBConnect();
-//        $this->adesss = $config['address'];
-//        $this->user = $config['user'];
-//        $this->password = $config['password'];
-//        $this->nameDataBase = $config['nameDataBase'];
         $this->adesss = 'localhost';
         $this->user = 'root';
         $this->password = '';
@@ -39,7 +49,6 @@ class General_DB
 
     /**
      * Wykonuje ządanie do bazy danych, jest zabezpieczona przed sql injection
-     * TODO JESZCZE NIE TESTOWALEM
      *
      * @param string $query
      * @param array $params
@@ -63,7 +72,6 @@ class General_DB
         }
         $results = [];
         try {
-//        $query = mysqli_real_escape_string($this->connect, $query);
            $res = mysqli_query($this->connect, $query);
            if (gettype($res) != 'boolean') {
                if (mysqli_num_rows($res) > 0) {

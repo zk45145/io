@@ -3,7 +3,14 @@
 
 abstract class Abstract_Mapper
 {
+    /**
+     * @var
+     */
     protected $table;
+
+    /**
+     * @var
+     */
     protected $modelName;
 
     /**
@@ -90,6 +97,11 @@ abstract class Abstract_Mapper
         return $models;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * @throws Exception
+     */
     public function getByIds($id)
     {
         $models = $this->fetchAll();
@@ -102,6 +114,9 @@ abstract class Abstract_Mapper
         throw new Exception('Brak obiektu');
     }
 
+    /**
+     * @param $id
+     */
     public function deleteById($id)
     {
         $query = 'DELETE FROM %s WHERE id = [int:id]';

@@ -3,8 +3,18 @@
 
 class View_Lekarze
 {
+    /**
+     * @var
+     */
     private $content;
+    /**
+     * @var
+     */
     private $form;
+
+    /**
+     * View_Lekarze constructor.
+     */
     public function __construct()
     {
         $this->content .= '<script src="js/lekarze.js"></script>';
@@ -30,6 +40,9 @@ class View_Lekarze
         }
     }
 
+    /**
+     *
+     */
     private function addAction()
     {
         $mapperLekarz = new Mapper_Lekarz();
@@ -62,6 +75,9 @@ class View_Lekarze
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     * @throws Exception
+     */
     private function editAction()
     {
         $mapperLekarz = new Mapper_Lekarz();
@@ -96,6 +112,9 @@ class View_Lekarze
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     *
+     */
     private function listAction()
     {
         $this->content .= $this->form->header('<p>Lista lekarzy');
@@ -123,6 +142,9 @@ class View_Lekarze
         $this->content .= $this->form->getTable($title, $data);
     }
 
+    /**
+     *
+     */
     private function deleteAction()
     {
         if (isset($_POST['action']) && $_POST['action'] == 'delete') {
@@ -140,6 +162,9 @@ class View_Lekarze
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     * @return string
+     */
     public function getContent()
     {
         return $this->content;

@@ -3,8 +3,18 @@
 
 class View_Pacjenci
 {
+    /**
+     * @var
+     */
     private $content;
+    /**
+     * @var
+     */
     private $form;
+
+    /**
+     * View_Pacjenci constructor.
+     */
     public function __construct()
     {
         $this->content .= '<script src="js/pacjenci.js"></script>';
@@ -30,6 +40,9 @@ class View_Pacjenci
         }
     }
 
+    /**
+     *
+     */
     private function addAction()
     {
         $mapperPacjent = new Mapper_Pacjent();
@@ -63,6 +76,9 @@ class View_Pacjenci
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     * @throws Exception
+     */
     private function editAction()
     {
         $mapperPacjent = new Mapper_Pacjent();
@@ -97,6 +113,9 @@ class View_Pacjenci
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     *
+     */
     private function listAction()
     {
         $this->content .= $this->form->header('<p>Lista pacjentów');
@@ -132,6 +151,9 @@ class View_Pacjenci
         $this->content .= $this->form->getTable($title, $data);
     }
 
+    /**
+     *
+     */
     private function deleteAction()
     {
         if (isset($_POST['action']) && $_POST['action'] == 'delete') {
@@ -149,6 +171,9 @@ class View_Pacjenci
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     * @return string
+     */
     public function getContent()
     {
         return $this->content;

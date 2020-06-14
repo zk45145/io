@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @param $className
+ * @throws Exception
+ */
 function __autoload($className)
 {
     $classPath = explode('_', $className);

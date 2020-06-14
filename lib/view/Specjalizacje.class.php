@@ -3,8 +3,18 @@
 
 class View_Specjalizacje
 {
+    /**
+     * @var
+     */
     private $content;
+    /**
+     * @var
+     */
     private $form;
+
+    /**
+     * View_Specjalizacje constructor.
+     */
     public function __construct()
     {
         $this->content .= '<script src="js/specjalizacje.js"></script>';
@@ -26,6 +36,9 @@ class View_Specjalizacje
         }
     }
 
+    /**
+     *
+     */
     private function addAction()
     {
         $mapperSpecjalizacja = new Mapper_Specjalizacja();
@@ -43,6 +56,9 @@ class View_Specjalizacje
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     * @throws Exception
+     */
     private function editAction()
     {
         $mapperSpecjalizacja = new Mapper_Specjalizacja();
@@ -63,6 +79,9 @@ class View_Specjalizacje
         $this->content .= $this->form->formEnd();
     }
 
+    /**
+     *
+     */
     private function listAction()
     {
         $this->content .= $this->form->header('<p>Lista specjalizacji');
@@ -85,6 +104,9 @@ class View_Specjalizacje
         $this->content .= $this->form->getTable($title, $data);
     }
 
+    /**
+     * @return string
+     */
     public function getContent()
     {
         return $this->content;

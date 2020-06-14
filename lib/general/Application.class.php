@@ -1,6 +1,5 @@
 <?php
 
-
 class General_Application
 {
     /**

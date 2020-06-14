@@ -18,6 +18,12 @@ class General_Form
         return '<' . $tag . '>' . $text . '</' . $tag . '>';
     }
 
+    /**
+     * @param $name
+     * @param $onclick
+     * @param string $class
+     * @return string
+     */
     public function button($name, $onclick, $class = self::BUTTONPRIMARY)
     {
         return '<button class="btn ' . $class . '" onclick="' . $onclick . '">' . $name . '</button>';
@@ -50,16 +56,27 @@ class General_Form
         return $ret;
     }
 
+    /**
+     * @return string
+     */
     public function tableBegin()
     {
         return '<table class="table">';
     }
 
+    /**
+     * @return string
+     */
     public function tableEnd()
     {
         return '</table>';
     }
 
+    /**
+     * @param array $titles
+     * @param array $rows
+     * @return string
+     */
     public function getTable(array $titles, array $rows)
     {
         $ret = '';
@@ -80,6 +97,10 @@ class General_Form
         return $ret;
     }
 
+    /**
+     * @param $data
+     * @return string
+     */
     public function row($data)
     {
         $ret = '';
@@ -92,28 +113,51 @@ class General_Form
         return $ret;
     }
 
+    /**
+     * @param $name
+     * @param $value
+     * @param string $type
+     * @return string
+     */
     public function input($name, $value, $type = 'text')
     {
         return '<input name="' . $name . '" value="' . $value . '" type="' . $type . '" class="form-control"/>';
         
     }
 
+    /**
+     * @param $action
+     * @param string $method
+     * @return string
+     */
     public function formBegin($action, $method = 'POST')
     {
 
         return '<form action="' . $action . '" method="' . $method . '">';
     }
 
+    /**
+     * @return string
+     */
     public function formEnd()
     {
         return '</form>';
     }
 
+    /**
+     * @return string
+     */
     public function submit()
     {
         return '<p><input class ="btn btn-primary btn-lg" type="submit" value="Zapisz"/></p>';
     }
 
+    /**
+     * @param $name
+     * @param $options
+     * @param null $selectValue
+     * @return string
+     */
     public function select($name, $options, $selectValue = null)
     {
         $ret = '';

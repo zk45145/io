@@ -1,0 +1,42 @@
+.topLayer{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    border: #666 1px solid;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+body {
+	background-color: #fffffb;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+form {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	text-align: left
+	background-color: white;
+}
+
+p{
+	text-align: center;
+	margin-top: 20px;
+}
+
+h1{
+	font-size: 40px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+h3{
+	font-size: 25px;
+	margin-top: 20px;
+}
+
+#nav-link{
+	color: red;
+}

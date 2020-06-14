@@ -85,10 +85,10 @@ class View_Lekarze
 
         $this->content .= $this->form->formBegin('lekarze.php?action=edit');
         $this->content .= $this->form->tableBegin();
-        $this->content .= $this->form->row(['id', $lekarz->getId()]);
-        $this->content .= $this->form->row(['imie', $this->form->input('imie',$lekarz->getImie())]);
-        $this->content .= $this->form->row(['nazwisko', $this->form->input('nazwisko', $lekarz->getNazwisko())]);
-        $this->content .= $this->form->row(['specjalizacja', $this->form->select('specjalizacja', $selectSpecjalziacje, $lekarz->getSpecjalizacjaId())]);
+        $this->content .= $this->form->row(['ID', $lekarz->getId()]);
+        $this->content .= $this->form->row(['Imię', $this->form->input('imie',$lekarz->getImie())]);
+        $this->content .= $this->form->row(['Nazwisko', $this->form->input('nazwisko', $lekarz->getNazwisko())]);
+        $this->content .= $this->form->row(['Specjalizacja', $this->form->select('specjalizacja', $selectSpecjalziacje, $lekarz->getSpecjalizacjaId())]);
         $this->content .= $this->form->tableEnd();
         $this->content .= $this->form->input('action', 'update', 'hidden');
         $this->content .= $this->form->input('id', $lekarz->getId(), 'hidden');

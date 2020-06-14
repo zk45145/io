@@ -82,14 +82,14 @@ class View_Pacjenci
 
         $this->content .= $this->form->formBegin('pacjenci.php?action=edit');
         $this->content .= $this->form->tableBegin();
-        $this->content .= $this->form->row(['id', $pacjent->getId()]);
-        $this->content .= $this->form->row(['imie', $this->form->input('imie',$pacjent->getImie())]);
-        $this->content .= $this->form->row(['nazwisko', $this->form->input('nazwisko', $pacjent->getNazwisko())]);
-        $this->content .= $this->form->row(['numer_telefonu', $this->form->input('numer_telefonu', $pacjent->getNumerTelefonu())]);
-        $this->content .= $this->form->row(['ulica', $this->form->input('ulica', $pacjent->getUlica())]);
-        $this->content .= $this->form->row(['miasto', $this->form->input('miasto', $pacjent->getMiasto())]);
-        $this->content .= $this->form->row(['adres_email', $this->form->input('adres_email', $pacjent->getEMail())]);
-        $this->content .= $this->form->row(['data_urodzenia', $this->form->input('data_urodzenia', $pacjent->getDataUrodzenia())]);
+        $this->content .= $this->form->row(['ID', $pacjent->getId()]);
+        $this->content .= $this->form->row(['Imię', $this->form->input('imie',$pacjent->getImie())]);
+        $this->content .= $this->form->row(['Nazwisko', $this->form->input('nazwisko', $pacjent->getNazwisko())]);
+        $this->content .= $this->form->row(['Numer telefonu', $this->form->input('numer_telefonu', $pacjent->getNumerTelefonu())]);
+        $this->content .= $this->form->row(['Ulica', $this->form->input('ulica', $pacjent->getUlica())]);
+        $this->content .= $this->form->row(['Miasto', $this->form->input('miasto', $pacjent->getMiasto())]);
+        $this->content .= $this->form->row(['E-mail', $this->form->input('adres_email', $pacjent->getEMail())]);
+        $this->content .= $this->form->row(['Data urodzenia', $this->form->input('data_urodzenia', $pacjent->getDataUrodzenia())]);
         $this->content .= $this->form->tableEnd();
         $this->content .= $this->form->input('action', 'update', 'hidden');
         $this->content .= $this->form->input('id', $pacjent->getId(), 'hidden');

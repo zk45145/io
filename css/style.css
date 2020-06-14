@@ -18,7 +18,6 @@ form {
 	margin-left: 10px;
 	margin-bottom: 10px;
 	text-align: left
-	background-color: white;
 }
 
 p{
@@ -39,4 +38,5 @@ h3{
 
 img{
 	cursor: pointer;
+	float: right;
 }
